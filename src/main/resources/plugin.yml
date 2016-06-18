@@ -1,0 +1,6 @@
+main : ${project.groupId}.boxx.Boxx
+name: Boxx
+version: ${project.version}
+description: ${project.description}
+author: ${project.author}
+softdepend: [Vault]
