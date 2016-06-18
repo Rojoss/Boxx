@@ -314,6 +314,36 @@ public abstract class Menu {
         }
     }
 
+    /**
+     * Fill up multiple slots with a specified item.
+     *
+     * @param slots The slots to fill
+     * @param item The item to fill the slot with. (Will override any existing items)
+     */
+    protected void setSlots(EItem item, int... slots) {
+        for (int slot : slots) {
+            setSlot(slot, item, null);
+        }
+    }
+
+    /**
+     * Fill up multiple slots with a specified item.
+     * If a player is specified it will only display for that player.
+     * It will update all open menus that are shown to players.
+     * <p/>
+     * When setting an item for a player the item isn't registered in this menu.
+     * This also means it's only possible to set items for players when the inventory is open and shown to the player.
+     *
+     * @param slots The slots to fill.
+     * @param item The item to fill the slot with. (Will override any existing items)
+     * @param player When not null it will only update the inventory for this player.
+     */
+    protected void setSlots(EItem item, Player player, int... slots) {
+        for (int slot : slots) {
+            setSlot(slot, item, player);
+        }
+    }
+
 
     /**
      * Clear all items out of the menu.
