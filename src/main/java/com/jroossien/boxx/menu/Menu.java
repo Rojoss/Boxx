@@ -427,7 +427,7 @@ public abstract class Menu {
         if (inv.getSize() != getSlots()) {
             return false;
         }
-        if (!Str.replaceColor(inv.getTitle()).equalsIgnoreCase(getTitle())) {
+        if (!Str.replaceColor(inv.getTitle()).equalsIgnoreCase(Str.replaceColor(getTitle()))) {
             return false;
         }
         return true;
