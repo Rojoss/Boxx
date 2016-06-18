@@ -120,7 +120,7 @@ public class ItemUtil {
             return true;
         }
         if (!item.hasItemMeta()) {
-            return false;
+            return !meta;
         }
         ItemMeta itemMeta = item.getItemMeta();
         ItemMeta matchMeta = match.getItemMeta();
