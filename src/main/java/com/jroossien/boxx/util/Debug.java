@@ -26,9 +26,18 @@
 package com.jroossien.boxx.util;
 
 import com.jroossien.boxx.Boxx;
-import com.jroossien.boxx.options.Options;
-import com.jroossien.boxx.options.SingleOption;
+import com.jroossien.boxx.options.single.*;
+import com.jroossien.boxx.util.cuboid.Cuboid;
+import com.jroossien.boxx.util.entity.EEntity;
+import com.jroossien.boxx.util.entity.EntityStack;
+import com.jroossien.boxx.util.item.EItem;
+import org.bukkit.*;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.material.MaterialData;
+import org.bukkit.potion.PotionEffect;
 
 import java.util.*;
 
@@ -123,13 +132,48 @@ public class Debug {
                 strings.add(objToString(key) + ":" + objToString(((Map)obj).get(key)));
             }
             return "Map[" + ((Map)obj).size() + "]<" + Str.implode(strings, ", ") + ">";
-        } else {
-            for (SingleOption option : Options.getOptions()) {
-                SingleOption clone = (SingleOption)option.clone();
-                if (clone.parse(obj) && clone.hasValue()) {
-                    return clone.getDisplayValue();
-                }
-            }
+        } else if (obj instanceof Block) {
+            return BlockO.display((Block)obj);
+        } else if (obj instanceof Color) {
+            return ColorO.display((Color)obj);
+        } else if (obj instanceof Cuboid) {
+            return CuboidO.display((Cuboid)obj);
+        } else if (obj instanceof Enchant) {
+            return EnchantO.display((Enchant)obj);
+        } else if (obj instanceof Entity) {
+            return EntityO.serialize(new EEntity((Entity)obj));
+        } else if (obj instanceof EEntity) {
+            return EntityO.serialize((EEntity)obj);
+        } else if (obj instanceof EntityStack) {
+            return EntityStackO.serialize((EntityStack)obj);
+        } else if (obj instanceof FireworkEffect) {
+            return FireworkO.display((FireworkEffect)obj);
+        } else if (obj instanceof ItemStack) {
+            return ItemO.serialize(new EItem((ItemStack)obj));
+        } else if (obj instanceof Location) {
+            return LocationO.display((Location)obj);
+        } else if (obj instanceof MaterialData) {
+            return MaterialO.display((MaterialData)obj);
+        } else if (obj instanceof Player) {
+            return PlayerO.display((Player)obj);
+        } else if (obj instanceof OfflinePlayer) {
+            return OfflinePlayerO.display((OfflinePlayer)obj);
+        } else if (obj instanceof ParticleEffect) {
+            return ParticleO.serialize((ParticleEffect)obj);
+        } else if (obj instanceof PotionEffect) {
+            return PotionO.display((PotionEffect)obj);
+        } else if (obj instanceof org.bukkit.util.Vector) {
+            return VectorO.display((org.bukkit.util.Vector)obj);
+        } else if (obj instanceof World) {
+            return WorldO.display((World)obj);
+        } else if (obj instanceof Integer) {
+            return IntO.display((Integer)obj);
+        } else if (obj instanceof DoubleO) {
+            return DoubleO.display((Double)obj);
+        } else if (obj instanceof Float) {
+            return DoubleO.display(Double.valueOf((Float)obj));
+        } else if (obj instanceof Boolean) {
+            return BoolO.display((Boolean)obj);
         }
 
         return obj.toString();

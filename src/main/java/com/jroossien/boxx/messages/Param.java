@@ -81,7 +81,7 @@ public class Param {
      */
     @Override
     public String toString() {
-        return Debug.objToString(value);
+        return value.toString();
     }
 
     /**

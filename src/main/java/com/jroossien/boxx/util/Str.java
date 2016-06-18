@@ -50,6 +50,9 @@ public class Str {
      * @return formatted string
      */
     public static String color(String str) {
+        if (str.trim().isEmpty()) {
+            return str;
+        }
         return COLOR.matcher(str).replaceAll("§$1");
     }
 
@@ -62,7 +65,7 @@ public class Str {
      */
     public static String[] color(String... strings) {
         for (int i = 0; i < strings.length; i++) {
-            strings[i] = COLOR.matcher(strings[i]).replaceAll("§$1");
+            strings[i] = color(strings[i]);
         }
         return strings;
     }
@@ -76,7 +79,7 @@ public class Str {
      */
     public static List<String> color(List<String> strings) {
         for (int i = 0; i < strings.size(); i++) {
-            strings.set(i, COLOR.matcher(strings.get(i)).replaceAll("§$1"));
+            strings.set(i, color(strings.get(i)));
         }
         return strings;
     }
@@ -88,6 +91,9 @@ public class Str {
      * @return formatted string
      */
     public static String replaceColor(String str) {
+        if (str.trim().isEmpty()) {
+            return str;
+        }
         return COLOR_REPLACE.matcher(str).replaceAll("&$1");
     }
 
@@ -99,7 +105,7 @@ public class Str {
      */
     public static String[] replaceColor(String... strings) {
         for (int i = 0; i < strings.length; i++) {
-            strings[i] = COLOR_REPLACE.matcher(strings[i]).replaceAll("&$1");
+            strings[i] = replaceColor(strings[i]);
         }
         return strings;
     }
@@ -112,7 +118,7 @@ public class Str {
      */
     public static List<String> replaceColor(List<String> strings) {
         for (int i = 0; i < strings.size(); i++) {
-            strings.set(i, COLOR_REPLACE.matcher(strings.get(i)).replaceAll("&$1"));
+            strings.set(i, replaceColor(strings.get(i)));
         }
         return strings;
     }
@@ -125,6 +131,9 @@ public class Str {
      * @return String without any colors and without any color codes.
      */
     public static String stripColor(String str) {
+        if (str.trim().isEmpty()) {
+            return str;
+        }
         return COLOR_STRIP.matcher(str).replaceAll("");
     }
 
@@ -137,7 +146,7 @@ public class Str {
      */
     public static String[] stripColor(String... strings) {
         for (int i = 0; i < strings.length; i++) {
-            strings[i] = COLOR_STRIP.matcher(strings[i]).replaceAll("");
+            strings[i] = stripColor(strings[i]);
         }
         return strings;
     }
@@ -151,7 +160,7 @@ public class Str {
      */
     public static List<String> stripColor(List<String> strings) {
         for (int i = 0; i < strings.size(); i++) {
-            strings.set(i, COLOR_STRIP.matcher(strings.get(i)).replaceAll(""));
+            strings.set(i, stripColor(strings.get(i)));
         }
         return strings;
     }
@@ -165,7 +174,7 @@ public class Str {
      * @return Capitalized string
      */
     public static String capitalize(String str) {
-        if (str.length() == 0) {
+        if (str.trim().isEmpty()) {
             return str;
         }
         return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();

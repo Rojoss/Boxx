@@ -31,7 +31,6 @@ import com.jroossien.boxx.commands.api.parse.SubCmdO;
 import com.jroossien.boxx.messages.Msg;
 import com.jroossien.boxx.options.SingleOption;
 import com.jroossien.boxx.options.single.IntO;
-import com.jroossien.boxx.util.Debug;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -264,7 +263,6 @@ public abstract class BaseCmd extends Cmd {
 
         TabCompleteData data = null;
 
-        Debug.bc("tab complete", args);
         if (args.length == 0 || args.length == 1 && args[0].trim().isEmpty()) {
             //Get option from first argument if nothing is specified yet.
             Argument arg = new ArrayList<>(getArguments().values()).get(0);
