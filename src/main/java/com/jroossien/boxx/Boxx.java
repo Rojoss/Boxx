@@ -25,7 +25,7 @@
 
 package com.jroossien.boxx;
 
-import com.jroossien.boxx.commands.*;
+import com.jroossien.boxx.commands.BoxxCmd;
 import com.jroossien.boxx.commands.api.CmdRegistration;
 import com.jroossien.boxx.commands.api.exception.CmdAlreadyRegisteredException;
 import com.jroossien.boxx.config.PluginCfg;

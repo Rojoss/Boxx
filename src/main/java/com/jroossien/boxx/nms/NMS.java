@@ -30,6 +30,7 @@ import com.jroossien.boxx.nms.annotation.NMSDependant;
 import com.jroossien.boxx.nms.chat.Chat;
 import com.jroossien.boxx.nms.entity.EntityUtils;
 import com.jroossien.boxx.nms.item.ItemUtils;
+import com.jroossien.boxx.nms.sign.SignGUI;
 import org.apache.commons.lang.reflect.ConstructorUtils;
 import org.bukkit.Bukkit;
 
@@ -44,6 +45,7 @@ public class NMS {
     private Chat chat;
     private EntityUtils entityUtils;
     private ItemUtils itemUtils;
+    private SignGUI signGUI;
 
     private NMS() {
         try {
@@ -54,6 +56,7 @@ public class NMS {
             chat = (Chat) loadFromNMS(Chat.class);
             entityUtils = (EntityUtils) loadFromNMS(EntityUtils.class);
             itemUtils = (ItemUtils)loadFromNMS(ItemUtils.class);
+            signGUI = (SignGUI)loadFromNMS(SignGUI.class);
 
         } catch (ArrayIndexOutOfBoundsException ignored) {}
     }
@@ -68,6 +71,10 @@ public class NMS {
 
     public ItemUtils getItemUtils() {
         return itemUtils;
+    }
+
+    public SignGUI getSignGUI() {
+        return signGUI;
     }
 
 
