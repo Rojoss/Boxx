@@ -61,6 +61,7 @@ public class CmdParser {
         for (int i = 0; i < argsList.size(); i++) {
             argsList.set(i, Str.removeQuotes(argsList.get(i)));
         }
+        argsList.removeAll(Arrays.asList("", null));
 
         cmd = getSub(baseCmd, inputArgs);
         cmdData = new CmdData(sender, inputArgs);
