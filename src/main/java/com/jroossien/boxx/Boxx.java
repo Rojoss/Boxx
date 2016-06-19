@@ -29,6 +29,7 @@ import com.jroossien.boxx.commands.BoxxCmd;
 import com.jroossien.boxx.commands.api.CmdRegistration;
 import com.jroossien.boxx.commands.api.exception.CmdAlreadyRegisteredException;
 import com.jroossien.boxx.config.PluginCfg;
+import com.jroossien.boxx.input.internal.InputManager;
 import com.jroossien.boxx.menu.Menu;
 import com.jroossien.boxx.messages.Language;
 import com.jroossien.boxx.messages.MessageConfig;
@@ -58,6 +59,7 @@ public class Boxx extends JavaPlugin {
     private Language language = null;
 
     private SelectionManager sm;
+    private InputManager im;
 
     private PluginCfg cfg;
 
@@ -102,6 +104,7 @@ public class Boxx extends JavaPlugin {
         EntityTag.registerDefaults();
 
         sm = new SelectionManager();
+        im = new InputManager(this);
 
         registerCommands();
         registerListeners();
@@ -195,6 +198,15 @@ public class Boxx extends JavaPlugin {
      */
     public SelectionManager getSM() {
         return sm;
+    }
+
+    /**
+     * Get the {@link InputManager} for handling user input in different ways.
+     *
+     * @return The {@link InputManager}
+     */
+    public InputManager getIM() {
+        return im;
     }
 
     public PluginCfg getCfg() {
